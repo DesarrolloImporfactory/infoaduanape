@@ -73,6 +73,10 @@ app.post("/register", (req, res) => {
   res.redirect("/login");
 });
 
+app.get("/", (req, res) => {
+  res.send("Bienvenido a la aplicación");
+});
+
 app.get("/login", (req, res) => {
   res.send(
     '<form method="post" action="/login">Usuario: <input type="text" name="username"/><br>Contraseña: <input type="password" name="password"/><br><button type="submit">Iniciar sesión</button></form>'
