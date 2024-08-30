@@ -89,6 +89,10 @@ app.get("/register", (req, res) => {
   );
 });
 
+app.get("/test", (req, res) => {
+  res.sendFile(__dirname + "/browser.html");
+});
+
 app.get("/browser", async (req, res) => {
   if (!req.isAuthenticated()) {
     return res.redirect("/login");
