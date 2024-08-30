@@ -100,15 +100,6 @@ app.get("/browser", async (req, res) => {
   if (!browser) {
     browser = await puppeteer.launch({
       headless: true,
-      args: [
-        "--no-sandbox",
-        "--disable-setuid-sandbox",
-        "--disable-dev-shm-usage",
-        "--disable-gpu",
-        "--disable-software-rasterizer",
-        "--no-zygote",
-        "--single-process",
-      ],
     });
     browserSessions[username] = browser;
   }
