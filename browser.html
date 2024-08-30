@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navegador en vivo</title>
+</head>
+
+<body>
+    <h1>Navegador en vivo</h1>
+    <video id="browserStream" autoplay></video>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io({
+            query: { username: 'tu_nombre_usuario' }
+        });
+
+        const video = document.getElementById('browserStream');
+
+        socket.on('data', (chunk) => {
+            video.src = URL.createObjectURL(chunk);
+        });
+
+        video.addEventListener('mousemove', (event) => {
+            socket.emit('input', { type: 'mousemove', x: event.clientX, y: event.clientY });
+        });
+
+        // Más eventos pueden ser agregados como clicks, teclas, etc.
+    </script>
+</body>
+
+</html>
